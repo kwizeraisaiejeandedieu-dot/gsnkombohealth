@@ -4,8 +4,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content=" JOHNHEALTH is Artificial Intelligent health Platifoarm that help to know your disease it cause, prevention, medecine and locate the user to location of health site and can help in learniong about health.">
+<meta name="keywords" content="all peaoples">
+<meta name="author" content="KWIZERA Isaie  Jean de DIEU (JDDHM)">
+<meta name="cononical" content="https://johnhealth.netlify.app">
 <meta name="theme-color" content="#087f72">
-<title>NKOMBO HEAL — Rwanda Health Platform</title>
+<title>  JOHNHEALTH — Artificial intelligence Health Platform</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23087f72'/%3E%3Cpath d='M40 15h20v25h25v20H60v25H40V60H15V40h25z' fill='white'/%3E%3C/svg%3E">
 <style>
 :root{--primary:#087f72;--accent:#10a58e;--bg:#f2f8f7;--card:#fff;--text:#183b38;--muted:#6d8380;--border:#dce9e6;--soft:#e5f5f1;--shadow:0 8px 28px #164e4610}
@@ -81,7 +85,7 @@ footer{text-align:center;padding:26px;color:var(--muted);font-size:12px;line-hei
 <header>
   <div class="brand">
     <div class="logo">✚</div>
-    <div>NKOMBO HEAL<small>RWANDA HEALTH PLATFORM</small></div>
+    <div>JOHN HEALTH<small>Artificial Intelligence HEALTH PLATFORM</small></div>
   </div>
   <div class="head-actions">
     <select id="language" aria-label="Website language">
@@ -100,7 +104,7 @@ footer{text-align:center;padding:26px;color:var(--muted);font-size:12px;line-hei
   <button class="nav" data-page="services">▦ <span data-t="services">Health Services</span></button>
   <button class="nav" data-page="profile">♙ <span data-t="profile">My Profile</span></button>
   <button class="nav" data-page="contact">✉ <span data-t="contact">Contact</span></button>
-  <button class="nav" data-page="settings">⚙ <span data-t="settings">Settings / API</span></button>
+  <button class="nav" data-page="settings">⚙ <span data-t="settings">Settings</span></button>
   <div class="sidebar-card">
     <strong>💚 <span data-t="care">Your health matters</span></strong>
     <p data-t="side">Health information and healthcare search for people in Rwanda.</p>
@@ -220,27 +224,12 @@ footer{text-align:center;padding:26px;color:var(--muted);font-size:12px;line-hei
 
 <section class="page" id="page-settings">
   <div class="panel">
-    <h2 data-t="settings">Settings / API</h2>
-    <p class="muted" data-t="settingsDesc">Paste your OpenRouter key here to test the AI assistant in this browser.</p>
-    <div class="notice" data-t="keyWarning">Important: a key entered in frontend code or a browser can be exposed. For a public website, use a secure backend and keep the key on the server.</div>
-    <div class="field">
-      <label for="apiKey">OpenRouter API key</label>
-      <input id="apiKey" type="password" placeholder="Paste your sk-or-v1-... key here" autocomplete="off">
-    </div>
-    <div class="field">
-      <label for="modelId" data-t="modelLabel">OpenRouter model ID</label>
-      <input id="modelId" value="openai/gpt-4o-mini" placeholder="provider/model-name">
-    </div>
-    <div class="row">
-      <button class="btn" id="activateKey" data-t="activate">Activate for this session</button>
-      <button class="btn ghost" id="clearKey" data-t="clear">Clear key</button>
-      <a class="btn secondary" href="https://openrouter.ai/keys" target="_blank" rel="noopener noreferrer" data-t="getKey">Get API key ↗</a>
-    </div>
-    <p class="status" id="keyStatus"></p>
-    <hr style="border:0;border-top:1px solid var(--border);margin:22px 0">
+    <h2 data-t="settings">Settings</h2>
+    <p class="muted">The AI connection is configured by the website administrator. Visitors cannot enter or view an API key here.</p>
+    <div class="notice">Administrator configuration is stored in the JavaScript source for this standalone test file. Do not publish this file with a real API key: visitors can inspect downloaded HTML and browser code. Use the secure Netlify backend for a public website.</div>
     <h3 data-t="translateTitle">English and Kinyarwanda</h3>
     <p class="muted" data-t="translateDesc">Choose the language at the top of the page. AI answers are requested in that language. Use Google Translate as a separate website for other text.</p>
-    <a href="https://translate.google.com/?sl=en&tl=rw" target="_blank" rel="noopener noreferrer">English → Kinyarwanda: Google Translate ↗</a>
+    <a href="https://translate.google.com/?sl=en&amp;tl=rw" target="_blank" rel="noopener noreferrer">English → Kinyarwanda: Google Translate ↗</a>
   </div>
 </section>
 </main>
@@ -252,6 +241,7 @@ footer{text-align:center;padding:26px;color:var(--muted);font-size:12px;line-hei
 </footer>
 
 <script>
+
 const words={
 en:{
 home:"Home",ai:"AI Health Assistant",maps:"Hospitals & Maps",services:"Health Services",profile:"My Profile",contact:"Contact",settings:"Settings / API",care:"Your health matters",side:"Health information and healthcare search for people in Rwanda.",
@@ -267,7 +257,12 @@ nutrition:"Imirire n'imibereho myiza",nutritionDesc:"Amakuru rusange ku ndyo yuz
 }
 };
 
-let language="en",openRouterKey="",attachedImage=null;
+// ADMIN CONFIGURATION: paste your OpenRouter key between the quotes below.
+// WARNING: A key in a standalone HTML file is visible to anyone who can view its source.
+// For a public website, keep the key in a secure server-side environment variable instead.
+const ADMIN_OPENROUTER_API_KEY = "PASTE_YOUR_OPENROUTER_API_KEY_HERE";
+const ADMIN_OPENROUTER_MODEL = "openai/gpt-4o-mini";
+let language="en",openRouterKey=ADMIN_OPENROUTER_API_KEY,attachedImage=null;
 const el=id=>document.getElementById(id);
 
 function setLanguage(value){
@@ -296,18 +291,6 @@ function showPage(name){
 }
 document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
 document.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.goto)));
-
-/* API KEY: paste it into Settings on the website, not into this code. */
-el("activateKey").addEventListener("click",()=>{
- openRouterKey=el("apiKey").value.trim();
- el("keyStatus").textContent=openRouterKey
- ? "API key loaded for this page session. Test with a simple health question."
- : "Paste your OpenRouter API key first.";
-});
-el("clearKey").addEventListener("click",()=>{
- openRouterKey="";el("apiKey").value="";
- el("keyStatus").textContent="API key cleared from this page session.";
-});
 
 /* Image inputs: 10 MB for direct AI testing. Large medical files need backend storage. */
 el("imageInput").addEventListener("change",async e=>{
@@ -365,7 +348,7 @@ async function sendQuestion(){
    method:"POST",
    headers:{"Authorization":"Bearer "+openRouterKey,"Content-Type":"application/json"},
    body:JSON.stringify({
-    model:el("modelId").value.trim()||"openai/gpt-4o-mini",
+    model:ADMIN_OPENROUTER_MODEL,
     messages:[{role:"user",content}],
     max_tokens:1000,
     temperature:0.3
