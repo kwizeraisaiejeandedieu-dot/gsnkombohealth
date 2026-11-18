@@ -1,0 +1,10 @@
+
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "USER_QUESTION_GOES_HERE"
+    }
+  ],
+  "max_tokens": 1500
+}
